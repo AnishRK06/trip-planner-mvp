@@ -1,0 +1,94 @@
+Build a Trip Planner MVP
+
+Tech Stack:
+
+Front-end: React (web; responsive)
+
+Back-end: Node.js + Express
+
+Storage: browser localStorage (no auth)
+
+AI Chatbot: OpenAI API (gpt-4o-mini)
+
+Mock travel data (swap logic): in-memory or simple JSON for POIs, transport, dining
+
+Core Requirements:
+
+Trip Parameter Form
+
+Fields: budget, trip length (days), party size, destination or “Surprise Me,” transport modes, cuisine prefs.
+
+Validate required inputs with inline errors.
+
+Itinerary Generation
+
+On form submit, generate N days of morning/afternoon/evening slots.
+
+Total cost ≤ budget ±5%; durations sum within daily hours.
+
+Swap Functionality
+
+Each itinerary card has “Swap” button.
+
+Clicking opens modal showing 3–5 alternatives within ±10% cost and ±15% time.
+
+Choosing one updates the UI instantly.
+
+Chatbot Advisor
+
+Persistent chat widget; send user messages to OpenAI and display replies.
+
+Chatbot retains itinerary context; commands like “Add nightlife” modify itinerary.
+
+Persistence & Feedback
+
+Save form data, itinerary, chat history to localStorage; reload on page refresh.
+
+After itinerary renders, prompt user to rate (1–5) and log swap/chat actions with timestamps.
+
+Error Handling & Responsiveness
+
+Show retry option on travel-data fetch failures; fallback messaging for API timeouts.
+
+Responsive breakpoints: mobile ≤600px, desktop ≥1024px.
+
+Acceptance Checks:
+
+Form fields render correctly and validate.
+
+Generated days = trip length; 3 slots per day.
+
+Swap options meet cost/time thresholds.
+
+Chatbot replies under 2s and can adjust itinerary.
+
+localStorage restores state on reload.
+
+Layout adapts at defined breakpoints.
+
+Project Structure Suggestion:
+
+bash
+Copy
+Edit
+/client
+  ├── src/
+  │   ├── components/
+  │   │   ├── TripForm.jsx
+  │   │   ├── ItineraryCard.jsx
+  │   │   ├── SwapModal.jsx
+  │   │   └── ChatWidget.jsx
+  └── App.jsx
+/server
+  ├── index.js       // Express setup
+  ├── routes/
+  │   ├── trip.js    // /create, /swap endpoints (mock data)
+  │   └── chat.js    // OpenAI proxy
+  └── package.json
+Deliverables:
+
+A working Replit project with front-end and back-end.
+
+Clear inline comments and README with setup steps and how to test each feature.
+
+Demo instructions to validate form, itinerary, swap, chat, persistence, and responsiveness.
